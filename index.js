@@ -54,7 +54,7 @@ client.on("messageReactionAdd", (reaction, user) => {
     );
 
     if (!emoji) {
-      user.send("Kunne ikke finde denne emoji!");
+      user.send("**FEjL!** Kunne ikke finde nogen rolle med denne emoji!");
       reaction.remove();
       return;
     }
@@ -64,18 +64,13 @@ client.on("messageReactionAdd", (reaction, user) => {
     );
 
     if (!role) {
-      user.send("Kunne ikke finde nogen rolle med denne emoji!");
+      user.send("**FEjL!** Kunne ikke finde nogen rolle med denne emoji!");
       reaction.remove();
       return;
     }
 
     //console.log(role);
-    user.send(
-      "Du reagerede med " +
-        reaction._emoji.name +
-        " og vil modtage rollen: " +
-        role.name
-    );
+    user.send("Du har nu modtaget din klasserolle: **" + role.name + "**");
 
     let gMember = reaction.message.guild.member(user);
     gMember.roles.add(role);
