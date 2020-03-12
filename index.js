@@ -32,9 +32,11 @@ client.on("ready", () => {
 
 client.on("messageReactionAdd", (messageReaction, user) => {
   if (!messageReaction.message.id == reactionMessageID) {
+    console.log(messageReaction);
     var role = message.guild.roles.find(
       role => role.name === messageReaction._emoji.name
     );
+    console.log(role);
     messageReaction.author.send(
       "Du reagerede med " +
         messageReaction._emoji.name +
