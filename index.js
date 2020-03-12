@@ -44,7 +44,9 @@ client.on("messageReactionAdd", (reaction, user) => {
         " og vil modtage rollen: " +
         role
     );
-    reaction.message.author.member.roles.add(role);
+
+    let gMember = message.guild.member(user);
+    gMember.roles.add(role);
   }
 });
 
