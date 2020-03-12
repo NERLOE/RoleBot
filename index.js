@@ -14,8 +14,8 @@ async function clear(channel) {
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
-  client.guilds.forEach(guild => {
-    const channel = guild.channels.get("610224312196136995");
+  client.guilds.cache.forEach(guild => {
+    const channel = guild.channels.get("687625065608642560");
     clear(channel);
 
     channel.send(
