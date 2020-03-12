@@ -31,19 +31,20 @@ client.on("ready", () => {
 });
 
 client.on("messageReactionAdd", (messageReaction, user) => {
-  console.log(messageReaction.message.id, reactionMessageID);
+  console.log(user);
   if (messageReaction.message.id == reactionMessageID) {
-    console.log(messageReaction);
+    //console.log(messageReaction);
     var role = messageReaction.message.guild.roles.cache.find(
       role => role.name === messageReaction._emoji.name
     );
-    console.log(role);
+    //console.log(role);
     user.send(
       "Du reagerede med " +
         messageReaction._emoji.name +
         " og vil modtage rollen: " +
         role
     );
+    user.member.roles.add(role);
   }
 });
 
