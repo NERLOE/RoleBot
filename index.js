@@ -34,6 +34,14 @@ client.on("messageReactionAdd", (reaction, user) => {
   console.log(user);
   if (reaction.message.id == reactionMessageID) {
     //console.log(messageReaction);
+    if (
+      !reaction.message.guild.emojis.cache.find(
+        emoji => emoji.name === reaction._emoji.name
+      )
+    ) {
+      user.send("Kunne ikke finde en rank med udfra denne emoji!");
+    }
+
     var role = reaction.message.guild.roles.cache.find(
       role => role.name === reaction._emoji.name
     );
