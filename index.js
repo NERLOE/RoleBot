@@ -7,7 +7,7 @@ config({
 });
 
 async function clear(channel) {
-  const fetched = await channel.fetchMessages({ limit: 99 });
+  const fetched = await channel.messages.fetch({ limit: 99 });
   channel.bulkDelete(fetched);
 }
 
