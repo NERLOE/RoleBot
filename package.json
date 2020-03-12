@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "description": "RoleBot, en Discord bot til at give rolle via. beskeder.",
   "main": "index.js",
-  "dependencies": {
-    "discord.js": "^12.0.2",
-    "dotenv": "^8.2.0"
-  },
-  "devDependencies": {},
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Marcus Nerloe",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.0.0"
+  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NERLOE/RoleBot.git"
   },
-  "author": "NERLOE",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/NERLOE/RoleBot/issues"
   },
