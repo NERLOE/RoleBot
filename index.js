@@ -24,15 +24,19 @@ client.on("ready", () => {
         "@everyone Reagér på denne besked med følgende emojis, og i vil herefter modtage ranks som passer til jeres klasse og årgang."
       )
       .then(msg => {
-        console.log("emojis", msg.guild.emojis.cache);
-        const emotes = msg.guild.emojis.cache.map(
-          emoji =>
+        //console.log("emojis", msg.guild.emojis.cache);
+        const emotes = [];
+        msg.guild.emojis.cache.forEach(emoji => {
+          if (
             emoji.name === "1Q" ||
             emoji.name === "1X" ||
             emoji.name === "1T" ||
             emoji.name === "3Q" ||
             emoji.name === "3X"
-        );
+          ) {
+            emotes.push(emoji);
+          }
+        });
 
         reactionMessageID = msg.id;
 
