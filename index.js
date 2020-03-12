@@ -72,14 +72,24 @@ client.on("messageReactionAdd", (reaction, user) => {
       return;
     }
 
-    if (gMember.roles.cache.find(grole => grole.name != role.name && (grole.name == "1Q" || grole.name == "1T" || grole.name == "1X" || grole.name == "3Q" || grole.name == "3X")) {
+    let gMember = reaction.message.guild.member(user);
+    if (
+      gMember.roles.cache.find(
+        gRole =>
+          gRole.name != role.name &&
+          (gRole.name == "1Q" ||
+            gRole.name == "1T" ||
+            gRole.name == "1X" ||
+            gRole.name == "3Q" ||
+            gRole.name == "3X")
+      )
+    ) {
       user.send("**FEjL!** Du har allerede modtaget en klasserolle!");
       reaction.users.remove(user);
       return;
     }
 
     user.send("Du har nu modtaget din klasserolle: **" + role.name + "**");
-    let gMember = reaction.message.guild.member(user);
     gMember.roles.add(role);
   }
 });
