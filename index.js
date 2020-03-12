@@ -45,7 +45,7 @@ client.on("messageReactionAdd", (reaction, user) => {
         role
     );
 
-    let gMember = message.guild.member(user);
+    let gMember = reaction.message.guild.member(user);
     gMember.roles.add(role);
   }
 });
