@@ -11,6 +11,7 @@ async function clear(channel) {
   channel.bulkDelete(fetched);
 }
 
+var ready = false;
 var reactionMessageID;
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -41,12 +42,12 @@ client.on("ready", () => {
         reactionMessageID = msg.id;
 
         emotes.forEach(emote => msg.react(emote));
+        ready = true;
       });
   });
 });
 
 client.on("messageReactionAdd", (reaction, user) => {
-  console.log(user);
   if (user.id == "687618530283225168") return;
 
   if (reaction.message.id == reactionMessageID) {
@@ -76,6 +77,39 @@ client.on("messageReactionAdd", (reaction, user) => {
 
     let gMember = reaction.message.guild.member(user);
     gMember.roles.add(role);
+  }
+});
+
+client.on("messageReactionAdd", (reaction, user) => {
+  if (user.id == "687618530283225168") return;
+
+  if (ready || reaction.message.id == reactionMessageID) {
+    //console.log(messageReaction);
+    var emoji = reaction.message.guild.emojis.cache.find(
+      emoji => emoji.name === reaction._emoji.name
+    );
+
+    if (!emoji) {
+      user.send("**FEjL!** Kunne ikke finde nogen rolle med denne emoji!");
+      reaction.remove();
+      return;
+    }
+
+    var role = reaction.message.guild.roles.cache.find(
+      role => role.name === reaction._emoji.name
+    );
+
+    if (!role) {
+      user.send("**FEjL!** Kunne ikke finde nogen rolle med denne emoji!");
+      reaction.remove();
+      return;
+    }
+
+    //console.log(role);
+    user.send("Du har nu fået fjernet klasserollen: **" + role.name + "**");
+
+    let gMember = reaction.message.guild.member(user);
+    gMember.roles.remove(role);
   }
 });
 
