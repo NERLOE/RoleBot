@@ -27,11 +27,11 @@ client.on("ready", () => {
         console.log("emojis", msg.guild.emojis.cache);
         const emotes = msg.guild.emojis.cache.map(
           emoji =>
-            "1Q" === reaction._emoji.name ||
-            "1X" === reaction._emoji.name ||
-            "1T" === reaction._emoji.name ||
-            "3Q" === reaction._emoji.name ||
-            "3X" === reaction._emoji.name
+            emoji.name === "1Q" ||
+            emoji.name === "1X" ||
+            emoji.name === "1T" ||
+            emoji.name === "3Q" ||
+            emoji.name === "3X"
         );
 
         reactionMessageID = msg.id;
