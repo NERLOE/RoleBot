@@ -47,6 +47,8 @@ client.on("ready", () => {
 
 client.on("messageReactionAdd", (reaction, user) => {
   console.log(user);
+  if (user.id == "687618530283225168") return;
+
   if (reaction.message.id == reactionMessageID) {
     //console.log(messageReaction);
     var emoji = reaction.message.guild.emojis.cache.find(
