@@ -89,7 +89,7 @@ client.on("messageReactionAdd", (reaction, user) => {
       return;
     }
 
-    user.send("Du har nu modtaget din klasserolle: **" + role.name + "**");
+    //user.send("Du har nu modtaget din klasserolle: **" + role.name + "**");
     gMember.roles.add(role);
   }
 });
@@ -118,7 +118,7 @@ client.on("messageReactionRemove", (reaction, user) => {
     }
 
     //console.log(role);
-    user.send("Du har nu fået fjernet klasserollen: **" + role.name + "**");
+    //user.send("Du har nu fået fjernet klasserollen: **" + role.name + "**");
 
     let gMember = reaction.message.guild.member(user);
     gMember.roles.remove(role);
