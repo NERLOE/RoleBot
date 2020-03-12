@@ -24,6 +24,7 @@ client.on("ready", () => {
         "@everyone Reagér på denne besked med følgende emojis, og i vil herefter modtage ranks som passer til jeres klasse og årgang."
       )
       .then(msg => {
+        console.log("emojis", msg.guild.emojis.cache);
         const emote1Q = msg.guild.emojis.cache.get("1Q");
         const emote1X = msg.guild.emojis.cache.get("1X");
         const emote1T = msg.guild.emojis.cache.get("1T");
