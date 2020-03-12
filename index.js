@@ -34,7 +34,7 @@ client.on("messageReactionAdd", (messageReaction, user) => {
   console.log(messageReaction.message.id, reactionMessageID);
   if (messageReaction.message.id == reactionMessageID) {
     console.log(messageReaction);
-    var role = message.guild.roles.find(
+    var role = messageReaction.message.guild.roles.cache.find(
       role => role.name === messageReaction._emoji.name
     );
     console.log(role);
