@@ -25,7 +25,7 @@ client.on("ready", () => {
       )
       .then(msg => {
         console.log("emojis", msg.guild.emojis.cache);
-        const emotes = reaction.message.guild.emojis.cache.map(
+        const emotes = msg.guild.emojis.cache.map(
           emoji =>
             "1Q" === reaction._emoji.name ||
             "1X" === reaction._emoji.name ||
