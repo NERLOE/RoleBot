@@ -35,7 +35,7 @@ client.on("messageReactionAdd", (messageReaction, user) => {
     var role = message.guild.roles.find(
       role => role.name === messageReaction._emoji.name
     );
-    user.send(
+    messageReaction.author.send(
       "Du reagerede med " +
         messageReaction._emoji.name +
         " og vil modtage rollen: " +
