@@ -11,6 +11,7 @@ async function clear(channel) {
   channel.bulkDelete(fetched);
 }
 
+var reactionMessageID;
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
@@ -22,14 +23,25 @@ client.on("ready", () => {
       .send(
         "@everyone Reagér på denne besked med følgende emojis, og i vil herefter modtage ranks som passer til jeres klasse og årgang."
       )
-      .then(result => {
-        console.log(result);
+      .then(msg => {
+        reactionMessageID = msg.id;
+        console.log(msg);
       });
   });
 });
 
-client.on("messageReactionAdd", (messageReaction, client) => {
-  console.log(messageReaction);
+client.on("messageReactionAdd", (messageReaction, user) => {
+  if (!messageReaction.message.id == reactionMessageID) {
+    var role = message.guild.roles.find(
+      role => role.name === messageReaction._emoji.name
+    );
+    user.send(
+      "Du reagerede med " +
+        messageReaction._emoji.name +
+        " og vil modtage rollen: " +
+        role
+    );
+  }
 });
 
 client.login(process.env.TOKEN);
