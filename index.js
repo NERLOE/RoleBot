@@ -18,9 +18,13 @@ client.on("ready", () => {
     const channel = guild.channels.cache.get("687625065608642560");
     clear(channel);
 
-    channel.send(
-      "@everyone Reagér på denne besked med følgende emojis, og i vil herefter modtage ranks som passer til jeres klasse og årgang."
-    );
+    channel
+      .send(
+        "@everyone Reagér på denne besked med følgende emojis, og i vil herefter modtage ranks som passer til jeres klasse og årgang."
+      )
+      .then(result => {
+        console.log(result);
+      });
   });
 });
 
