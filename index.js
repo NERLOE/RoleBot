@@ -30,21 +30,21 @@ client.on("ready", () => {
   });
 });
 
-client.on("messageReactionAdd", (messageReaction, user) => {
+client.on("messageReactionAdd", (reaction, user) => {
   console.log(user);
-  if (messageReaction.message.id == reactionMessageID) {
+  if (reaction.message.id == reactionMessageID) {
     //console.log(messageReaction);
-    var role = messageReaction.message.guild.roles.cache.find(
-      role => role.name === messageReaction._emoji.name
+    var role = reaction.message.guild.roles.cache.find(
+      role => role.name === reaction._emoji.name
     );
     //console.log(role);
     user.send(
       "Du reagerede med " +
-        messageReaction._emoji.name +
+        reaction._emoji.name +
         " og vil modtage rollen: " +
         role
     );
-    user.member.roles.add(role);
+    reaction.message.author.member.roles.add(role);
   }
 });
 
