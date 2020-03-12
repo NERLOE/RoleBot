@@ -25,18 +25,18 @@ client.on("ready", () => {
       )
       .then(msg => {
         console.log("emojis", msg.guild.emojis.cache);
-        const emote1Q = msg.guild.emojis.cache.get("1Q");
-        const emote1X = msg.guild.emojis.cache.get("1X");
-        const emote1T = msg.guild.emojis.cache.get("1T");
-        const emote3Q = msg.guild.emojis.cache.get("3Q");
-        const emote3X = msg.guild.emojis.cache.get("3X");
+        const emotes = reaction.message.guild.emojis.cache.map(
+          emoji =>
+            "1Q" === reaction._emoji.name ||
+            "1X" === reaction._emoji.name ||
+            "1T" === reaction._emoji.name ||
+            "3Q" === reaction._emoji.name ||
+            "3X" === reaction._emoji.name
+        );
 
         reactionMessageID = msg.id;
-        msg.react(emote1Q);
-        msg.react(emote1X);
-        msg.react(emote1T);
-        msg.react(emote3Q);
-        msg.react(emote3X);
+
+        emotes.forEach(emote => msg.react(emote));
       });
   });
 });
