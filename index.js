@@ -28,4 +28,8 @@ client.on("ready", () => {
   });
 });
 
+client.on("messageReactionAdd", (messageReaction, client) => {
+  console.log(messageReaction);
+});
+
 client.login(process.env.TOKEN);
