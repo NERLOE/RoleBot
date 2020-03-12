@@ -34,17 +34,26 @@ client.on("messageReactionAdd", (reaction, user) => {
   console.log(user);
   if (reaction.message.id == reactionMessageID) {
     //console.log(messageReaction);
-    if (
-      !reaction.message.guild.emojis.cache.find(
-        emoji => emoji.name === reaction._emoji.name
-      )
-    ) {
-      user.send("Kunne ikke finde en rank med udfra denne emoji!");
+    var emoji = reaction.message.guild.emojis.cache.find(
+      emoji => emoji.name === reaction._emoji.name
+    );
+
+    if (!emoji) {
+      user.send("Kunne ikke finde denne emoji!");
+      reaction.remove();
+      return;
     }
 
     var role = reaction.message.guild.roles.cache.find(
       role => role.name === reaction._emoji.name
     );
+
+    if (!role) {
+      user.send("Kunne ikke finde nogen rolle med denne emoji!");
+      reaction.remove();
+      return;
+    }
+
     //console.log(role);
     user.send(
       "Du reagerede med " +
