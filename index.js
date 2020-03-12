@@ -24,8 +24,18 @@ client.on("ready", () => {
         "@everyone Reagér på denne besked med følgende emojis, og i vil herefter modtage ranks som passer til jeres klasse og årgang."
       )
       .then(msg => {
+        const emote1Q = msg.guild.emojis.cache.get("1Q");
+        const emote1X = msg.guild.emojis.cache.get("1X");
+        const emote1T = msg.guild.emojis.cache.get("1T");
+        const emote3Q = msg.guild.emojis.cache.get("3Q");
+        const emote3X = msg.guild.emojis.cache.get("3X");
+
         reactionMessageID = msg.id;
-        console.log(msg);
+        msg.react(emote1Q);
+        msg.react(emote1X);
+        msg.react(emote1T);
+        msg.react(emote3Q);
+        msg.react(emote3X);
       });
   });
 });
