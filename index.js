@@ -40,7 +40,7 @@ client.on("ready", () => {
 
         reactionMessageID = msg.id;
 
-        emotes.forEach(emote => console.log(emote)); // msg.react(emote)
+        emotes.forEach(emote => msg.react(emote));
       });
   });
 });
