@@ -80,7 +80,7 @@ client.on("messageReactionAdd", (reaction, user) => {
   }
 });
 
-client.on("messageReactionAdd", (reaction, user) => {
+client.on("messageReactionRemove", (reaction, user) => {
   if (user.id == "687618530283225168") return;
 
   if (ready || reaction.message.id == reactionMessageID) {
@@ -91,7 +91,6 @@ client.on("messageReactionAdd", (reaction, user) => {
 
     if (!emoji) {
       user.send("**FEjL!** Kunne ikke finde nogen rolle med denne emoji!");
-      reaction.remove();
       return;
     }
 
@@ -101,7 +100,6 @@ client.on("messageReactionAdd", (reaction, user) => {
 
     if (!role) {
       user.send("**FEjL!** Kunne ikke finde nogen rolle med denne emoji!");
-      reaction.remove();
       return;
     }
 
