@@ -59,7 +59,7 @@ client.on("messageReactionAdd", (reaction, user) => {
       "Du reagerede med " +
         reaction._emoji.name +
         " og vil modtage rollen: " +
-        role
+        role.name
     );
 
     let gMember = reaction.message.guild.member(user);
