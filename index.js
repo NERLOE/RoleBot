@@ -100,7 +100,7 @@ client.on("messageReactionAdd", (reaction, user) => {
 client.on("messageReactionRemove", (reaction, user) => {
   if (user.id == client.user.id) return;
 
-  if (ready || reaction.message.id == reactionMessageID) {
+  if (ready && reaction.message.id == reactionMessageID) {
     var emoji = reaction.message.guild.emojis.cache.find(
       emoji => emoji.name === reaction._emoji.name
     );
